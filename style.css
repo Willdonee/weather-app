@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    font-weight: 600;
 }
 
 body {
@@ -26,6 +27,14 @@ body::before {
     background: rgb(0, 0, 0, 0.15);
     backdrop-filter: blur(5px);
 }
+
+/* utilities */
+
+.regular-txt {
+    font-weight: 400;
+}
+
+/* end utilities */
 
 .main-container {
     /* border: solid; */
@@ -81,7 +90,11 @@ body::before {
 /* section: weather info */
 
 .weather-info {
-    border: solid;
+    /* border: solid; */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    color: rgb(255,255,255,0.75);
 }
 
 .location-date-container {
@@ -95,6 +108,80 @@ body::before {
     display: flex;
     align-items: center;
     gap: 6px;
+}
+
+.weather-summary-container {
+    /* border: solid; */
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+.weather-summary-img {
+    width: 120px;
+    height: 120px;
+}
+
+.weather-summary-info {
+    text-align: end;
+}
+
+.weather-condition-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.condition-item {
+    /* border: solid; */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.condition-item span {
+    font-size: 30px;
+}
+
+.forecast-items-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: scroll;
+    padding-bottom: 12px;
+}
+
+.forecast-items-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.forecast-items-container::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0, 0.1);
+    border-radius: 99px;
+}
+
+.forecast-items-container::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0, 0.15);
+    border-radius: 99px;
+}
+
+.forecast-item {
+    min-width: 70px;
+    background-color: rgb(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    border-radius: 12px;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.forecast-item:hover {
+    background-color: rgb(0, 0, 0, 0.15);
+}
+
+.forecast-item-img {
+    width: 35px;
+    height: 35px;
 }
 
 /* end section: weather info */
