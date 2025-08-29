@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: url(assets/bg.jpg);
+    height: 100dvh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100dvh;
+    background: rgb(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+}
+
+.main-container {
+    /* border: solid; */
+    width: 300px;
+    height: 500px;
+    z-index: 1;
+    background: linear-gradient(to top, rgb(0,0,0,0.15), rgb(255,255,255,0.15));
+    border-radius: 15px;
+    backdrop-filter: blur(80px);
+    padding: 20px;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+/* input container */
+.city-input {
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 15px;
+    border: 3px solid transparent;
+    background: rgb(0,0,0,0.15);
+    outline: none;
+    font-weight: 500;
+    transition: 0.3s border;
+    padding-right: 45px;
+     
+}
+
+.city-input:focus {
+    border: 3px solid rgb(0, 0, 0, 0.15);
+}
+
+.city-input::placeholder {
+    color: rgb(255,255,255,0.75);
+}
+
+.search-btn {
+    position: absolute;
+    top: 55%;
+    right: 16px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(255,255,255,0.75);
+}
+
+/* end input container */
+
+/* section: weather info */
+
+.weather-info {
+    border: solid;
+}
+
+.location-date-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location {
+    /* border: solid salmon; */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* end section: weather info */
