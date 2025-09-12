@@ -44,13 +44,13 @@ async function getFetchData(endPoint, city) {
 
 function getWeatherIcon(id) {
     console.log(id);
-    if (id <= 232) return `assets/weather/thunderstorm.svg`;
-    if (id <= 321) return `assets/weather/drizzle.svg`;
-    if (id <= 531) return `assets/weather/rain.svg`;
-    if (id <= 622) return `assets/weather/snow.svg`;
+    if (id <= 232) return `assets/weather/thunder.svg`;
+    if (id <= 321) return `assets/weather/rainy-4.svg`;
+    if (id <= 531) return `assets/weather/rainy-7.svg`;
+    if (id <= 622) return `assets/weather/snowy-5.svg`;
     if (id <= 781) return `assets/weather/atmosphere.svg`;
-    if (id <= 800) return `assets/weather/clear.svg`;
-    if (id <= 804) return `assets/weather/clouds.svg`;
+    if (id <= 800) return `assets/weather/day.svg`;
+    if (id <= 804) return `assets/weather/cloudy-day-2.svg`;
 }
 
 async function updateWeatherInfo(city) {
