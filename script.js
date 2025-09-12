@@ -13,6 +13,8 @@ const humidityTxt = document.querySelector('.humidity-value-txt');
 const windTxt = document.querySelector('.wind-value-txt');
 const weatherSummaryImg = document.querySelector('.weather-summary-img');
 
+const forecastContainer = document.querySelector('.forecast-items-container');
+
 
 const apiKey = '1227298e6ecb4ff1b193cb85dc7a252b';
 
@@ -74,10 +76,49 @@ async function updateWeatherInfo(city) {
     dateTxt.textContent = new Date().toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
     weatherSummaryImg.src = `${getWeatherIcon(id)}`;
 
-
-    console.log(weatherData);
+    await updateForecastInfo(city);
 
     showDisplaySection(weatherInfoSection);
+}
+
+async function updateForecastInfo(city) {
+    const forecastData = await getFetchData('forecast', city);
+
+    const timeTaken = '12:00:00';
+    const todayDate = new Date().toISOString().split('T')[0];
+    
+    console.log(todayDate);
+    forecastContainer.innerHTML = '';
+    forecastData.list.forEach(forecastWeather => {
+        if (forecastWeather.dt_txt.includes(timeTaken) && forecastWeather.dt_txt.split(' ')[0] !== todayDate) {
+            console.log(forecastWeather);
+            updateForecastItem(forecastWeather);
+        }
+    })
+
+    console.log(forecastData);
+}
+
+function updateForecastItem(weatherData) {
+    const {
+        dt_txt: date,
+        main: { temp },
+        weather: [{ id }]
+    } = weatherData;
+
+    const dateTaken = new Date(date);
+    const timeOptions = { day: 'numeric', month: 'short'};
+    const dateResult = dateTaken.toLocaleDateString('en-US', timeOptions);
+
+    const forecastItem = `
+        <div class="forecast-item">
+            <h5 class="forecast-item-date">${dateResult}</h5>
+            <img src="${getWeatherIcon(id)}" alt="" class="forecast-item-img">
+            <h5 class="forecast-item-temp">${Math.round(temp)} °C</h5>
+        </div>
+    `
+    
+    forecastContainer.insertAdjacentHTML('beforeend', forecastItem);
 }
 
 function showDisplaySection(section) {
